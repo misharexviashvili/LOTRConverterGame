@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0308AEE32C9B32B300FD4EC3 /* ExchangeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308AEE22C9B32B300FD4EC3 /* ExchangeInfo.swift */; };
 		03B32C652C9A1ACB00270B36 /* LOTRConverter17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B32C642C9A1ACB00270B36 /* LOTRConverter17App.swift */; };
 		03B32C672C9A1ACB00270B36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B32C662C9A1ACB00270B36 /* ContentView.swift */; };
 		03B32C692C9A1ACD00270B36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B32C682C9A1ACD00270B36 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0308AEE22C9B32B300FD4EC3 /* ExchangeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeInfo.swift; sourceTree = "<group>"; };
 		03B32C612C9A1ACB00270B36 /* LOTRConverter17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTRConverter17.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B32C642C9A1ACB00270B36 /* LOTRConverter17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOTRConverter17App.swift; sourceTree = "<group>"; };
 		03B32C662C9A1ACB00270B36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				03B32C642C9A1ACB00270B36 /* LOTRConverter17App.swift */,
 				03B32C662C9A1ACB00270B36 /* ContentView.swift */,
+				0308AEE22C9B32B300FD4EC3 /* ExchangeInfo.swift */,
 				03B32C682C9A1ACD00270B36 /* Assets.xcassets */,
 				03B32C6A2C9A1ACD00270B36 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0308AEE32C9B32B300FD4EC3 /* ExchangeInfo.swift in Sources */,
 				03B32C672C9A1ACB00270B36 /* ContentView.swift in Sources */,
 				03B32C652C9A1ACB00270B36 /* LOTRConverter17App.swift in Sources */,
 			);
