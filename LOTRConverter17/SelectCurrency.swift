@@ -11,31 +11,29 @@ struct SelectCurrency: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack{
-//            Parchment background iamge
+            //            Parchment background iamge
             Image(.parchment)
                 .resizable()
                 .ignoresSafeArea()
                 .background(.brown)
             VStack{
-//                Text
-                Text("Select the currency you are starting with:")
+                //                Text
+                Text("Select the currency you are starting with:\(Currency.silverPenny.rawValue)")
                     .fontWeight(.bold)
                 
-//                Currency Icons
+                //                Currency Icons
                 LazyVGrid(columns: [GridItem(), GridItem(),GridItem()]){
-                    CurrencyIcon(currencyImage: .copperpenny, currencyName: "Copper Penny")
-                    CurrencyIcon(currencyImage: .silverpenny, currencyName: "Silver Penny")
-                    CurrencyIcon(currencyImage: .silverpiece, currencyName: "Silver Piece")
-                    CurrencyIcon(currencyImage: .goldpenny, currencyName: "Gold Penny")
-                    CurrencyIcon(currencyImage: .goldpiece, currencyName: "Gold Piece")
+                    ForEach(Currency.allCases){currency in
+                        CurrencyIcon(currencyImage: currency.image, currencyName: currency.name)
+                    }
                 }
-//                Text
+                //                Text
                 Text("Selecet currency yoo would like to convert to:")
                     .fontWeight(.bold)
-                    
-//                Currency Icons
                 
-//                Done button
+                //                Currency Icons
+                
+                //                Done button
                 Button("Done"){
                     dismiss()
                 }
