@@ -13,11 +13,11 @@ struct CurrencyIcon: View {
     
     var body: some View {
         ZStack(alignment: .bottom){
-//                    Currency Image
+            //                    Currency Image
             Image(currencyImage)
                 .resizable()
                 .scaledToFit()
-//                    Currency name
+            //                    Currency name
             Text(currencyName)
                 .padding(3)
                 .font(.caption)
