@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var showSelectCurrency = false
     @State var leftAmount = ""
     @State var rightAmount = ""
+    @FocusState var leftTyping
+    @FocusState var rightTyping
     @State var leftCurrency = Currency.silverPiece
     @State var rightCurrency : Currency = .goldPiece
     var body: some View {
@@ -44,6 +46,12 @@ struct ContentView: View {
                         }
                         TextField("Amount", text: $leftAmount)
                             .textFieldStyle(.roundedBorder)
+                            .focused($leftTyping)
+                            .onChange(of: leftAmount){
+                                if leftTyping {
+                                    rightAmount = leftCurrency.convert(leftAmount, rightCurrency)
+                                }
+                            }
                     }
                     Image(systemName:"equal")
                         .font(.largeTitle)
@@ -66,6 +74,12 @@ struct ContentView: View {
                         TextField("Amount", text: $rightAmount)
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
+                            .focused($rightTyping)
+                            .onChange(of: rightAmount){
+                                if rightTyping{
+                                    leftAmount = rightCurrency.convert(rightAmount, leftCurrency)
+                                }
+                            }
                     }
                 }
                 .padding()
@@ -87,7 +101,7 @@ struct ContentView: View {
                     ExchangeInfo()
                 }
                 .sheet(isPresented: $showSelectCurrency) {
-                    SelectCurrency(topCurrency: leftCurrency, bottomCurrency: rightCurrency)
+                    SelectCurrency(topCurrency: $leftCurrency, bottomCurrency: $rightCurrency)
                 }
                 
             }
