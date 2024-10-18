@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import TipKit
 struct ContentView: View {
     @State var showExchangeInfo = false
     @State var showSelectCurrency = false
@@ -44,14 +44,11 @@ struct ContentView: View {
                         .onTapGesture{
                             showSelectCurrency.toggle()
                         }
+                        .popoverTip(CurrencyTip(), arrowEdge: .bottom)
                         TextField("Amount", text: $leftAmount)
                             .textFieldStyle(.roundedBorder)
                             .focused($leftTyping)
-                            .onChange(of: leftAmount){
-                                if leftTyping {
-                                    rightAmount = leftCurrency.convert(leftAmount, rightCurrency)
-                                }
-                            }
+                            .keyboardType(.decimalPad)
                     }
                     Image(systemName:"equal")
                         .font(.largeTitle)
@@ -75,11 +72,8 @@ struct ContentView: View {
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
                             .focused($rightTyping)
-                            .onChange(of: rightAmount){
-                                if rightTyping{
-                                    leftAmount = rightCurrency.convert(rightAmount, leftCurrency)
-                                }
-                            }
+                            .keyboardType(.decimalPad)
+                        
                     }
                 }
                 .padding()
@@ -97,6 +91,23 @@ struct ContentView: View {
                     .foregroundStyle(.white)
                 }
                 .padding(.trailing)
+                .task {
+                    try? Tips.configure()
+                }
+                .onChange(of: leftAmount){
+                    if leftTyping {
+                        rightAmount = leftCurrency.convert(leftAmount, rightCurrency)
+                    }
+                }
+                .onChange(of: rightAmount){
+                    if rightTyping{
+                        leftAmount = rightCurrency.convert(rightAmount, leftCurrency)
+                    }
+                }.onChange(of: leftCurrency){
+                    leftAmount = rightCurrency.convert(rightAmount, leftCurrency)
+                }.onChange(of: rightCurrency){
+                    rightAmount = leftCurrency.convert(leftAmount, rightCurrency)
+                }
                 .sheet(isPresented:$showExchangeInfo){
                     ExchangeInfo()
                 }
