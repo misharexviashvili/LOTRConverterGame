@@ -21,6 +21,9 @@ struct ContentView: View {
             Image(.background)
                 .resizable()
                 .ignoresSafeArea()
+                .onTapGesture {
+                    dismissKeyboard()
+                }
             VStack{
                 Image(.prancingpony)
                     .resizable()
@@ -116,10 +119,14 @@ struct ContentView: View {
                 }
                 
             }
+            
+            
         }
     }
 }
-
+func dismissKeyboard (){
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+}
 #Preview {
     ContentView()
 }

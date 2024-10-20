@@ -14,6 +14,7 @@ enum Currency: Double, CaseIterable, Identifiable {
     case silverPiece = 16
     case goldPenny = 4
     case goldPiece = 1
+    case george = 64000
     
     var image : ImageResource {
         switch self {
@@ -27,6 +28,8 @@ enum Currency: Double, CaseIterable, Identifiable {
                 .goldpenny
         case .goldPiece:
                 .goldpiece
+        case .george:
+                .georgeicon
         }
     }
     var name : String {
@@ -41,6 +44,8 @@ enum Currency: Double, CaseIterable, Identifiable {
             "Gold Penny"
         case .goldPiece:
             "Gold Piece"
+        case .george:
+            "George Token"
         }
     }
     func convert(_ amountString: String, _ currency: Currency) -> String {
