@@ -34,19 +34,11 @@ struct ContentView: View {
                     .foregroundStyle(.white)
                 HStack{
                     VStack{
-                        HStack{
-                            Image(leftCurrency.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height:33)
-                            Text(leftCurrency.name)
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                        }
-                        .padding(.bottom, -5)
-                        .onTapGesture{
+                        CurrencyLabel(currencyName: leftCurrency.name,
+                                      currencyImage: leftCurrency.image,
+                                      onTapAction: {
                             showSelectCurrency.toggle()
-                        }
+                        })
                         .popoverTip(CurrencyTip(), arrowEdge: .bottom)
                         TextField("Amount", text: $leftAmount)
                             .textFieldStyle(.roundedBorder)
@@ -58,19 +50,11 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                         .symbolEffect(.pulse)
                     VStack{
-                        HStack{
-                            Text(rightCurrency.name)
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                            Image(rightCurrency.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 33)
-                        }
-                        .padding(.bottom, -5)
-                        .onTapGesture{
+                        CurrencyLabel(currencyName: rightCurrency.name,
+                                      currencyImage: rightCurrency.image,
+                                      onTapAction: {
                             showSelectCurrency.toggle()
-                        }
+                        })
                         TextField("Amount", text: $rightAmount)
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
