@@ -21,7 +21,7 @@ struct ExchangeRate: View {
             //                    exchange rate text
             Text(text)
             //                    right currency img
-            Image(.goldpenny)
+            Image(rightImage)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 33)
